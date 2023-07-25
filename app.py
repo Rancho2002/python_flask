@@ -23,6 +23,11 @@ class Todo(db.Model):
 with app.app_context():
     db.create_all()
 
+
+@app.route("/about")
+def about():
+    return render_template("about.html")
+
 @app.route("/",methods=['GET','POST'])
 def index():
 

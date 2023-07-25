@@ -1,6 +1,6 @@
 from flask import Flask,render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
-from datetime import date
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -15,7 +15,7 @@ class Todo(db.Model):
     sl = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(200), nullable=False)
     subject = db.Column(db.String(500),nullable=False)
-    date_created=db.Column(db.DateTime, default=date.today())
+    date_created=db.Column(db.DateTime, default = datetime.now())
 
     def __repr__(self) -> str:
         return f"{self.sl} - {self.title}"
@@ -45,6 +45,22 @@ def delete(serial):
     db.session.delete(item)
     db.session.commit()
     return redirect('/')
+
+@app.route("/update/<int:serial>",methods=['GET','POST'])
+def update(serial):
+    if request.method=="POST":
+        title=request.form['title']
+        subject=request.form['subject']
+        item=db.session.execute(db.select(Todo).filter_by(sl=serial)).scalar_one()
+        item.title=title
+        item.subject=subject
+        db.session.add(item)
+        db.session.commit()
+
+        return redirect("/")
+
+    item= db.session.execute(db.select(Todo).filter_by(sl=serial)).scalar_one()
+    return render_template("update.html",item=item)
 
 if __name__=="__main__":
     app.run(debug=True)

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Decimal Converter</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container my-4">
+        <form action="/" method="post">
+            <div class="mb-3">
+            
+            <h1 class="text-center"><a href="/" class="text-black">Convert Decimal Number</a></h1> 
+            </div>
+            <div class="mb-3">
+              <label for="input" class="form-label">Enter Number</label>
+              <input type="number" class="form-control" id="input" name="input" required>
+            </div>
+            <select class="form-select my-3" aria-label="Default select example" name="choice" required>
+                <option selected value="None">Select Action</option>
+                <option value="bin">Binary</option>
+                <option value="oct">Octal</option>
+                <option value="hex">Hexa Decimal</option>
+              </select>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+          
+          <div class="form mt-4">
+            <textarea class="form-control" placeholder="Your result will be dispplayed here" id="floatingTextarea2" style="height: 100px" readonly>{% if ans %}Decimal: {{dec}}
+{{mode}}: {{ans}}{% endif %}</textarea>
+          </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+

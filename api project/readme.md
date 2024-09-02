@@ -1,5 +1,5 @@
 ## Project is live at
-Click here: https://arijitghosh.pythonanywhere.com/
+Click here: <a href='https://arijitghosh.pythonanywhere.com/' target='_blank'>https://arijitghosh.pythonanywhere.com/</a>
 
 ## Want to check REST API?
 ```bash
